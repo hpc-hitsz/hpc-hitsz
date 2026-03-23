@@ -1,0 +1,737 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:1234/slurm/slurm-app-install/">
+      
+      
+        <link rel="prev" href="../slurm-base/">
+      
+      
+        <link rel="next" href="../slurm-pytorch-example/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>slurm环境配置 - 深圳校区高性能计算平台手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../js/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Greep" data-md-color-accent="Greep">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="深圳校区高性能计算平台手册" class="md-header__button md-logo" aria-label="深圳校区高性能计算平台手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56zm-16 104h192c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32m192 32H160v192h192z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            深圳校区高性能计算平台手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              slurm环境配置
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="深圳校区高性能计算平台手册" class="md-nav__button md-logo" aria-label="深圳校区高性能计算平台手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56zm-16 104h192c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32m192 32H160v192h192z"/></svg>
+
+    </a>
+    深圳校区高性能计算平台手册
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    集群概况
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    slurm集群基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    slurm环境配置
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    slurm环境配置
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1、预装软件的使用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2、自行安装软件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2、自行安装软件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Conda
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-spack" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Spack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3slurmglibc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3、slurm上源码编译：glibc
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm-pytorch-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    slurm运行Pytorch示例
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1、预装软件的使用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2、自行安装软件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2、自行安装软件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Conda
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-spack" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Spack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3slurmglibc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3、slurm上源码编译：glibc
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>slurm环境配置</h1>
+
+<ul>
+<li>若为商业软件，请自行获取软件使用权并安装；</li>
+<li>若为常用开源软件，查看/opt/app目录下是否已安装；</li>
+<li>若未安装<ul>
+<li>请先考虑是否能用conda 安装；</li>
+<li>再考虑在自己家目录下使用源码安装，遇到问题，请将可复现的步骤发到用户交流qq群咨询；</li>
+<li>或者考虑容器安装的方法。</li>
+</ul>
+</li>
+</ul>
+<h2 id="1">1、预装软件的使用</h2>
+<p>/usr/bin等$PATH变量中指定的路径下的工具都可直接使用，另安装了spack,anaconda等软件在/opt目录下。</p>
+<p>为了避免不恰当编辑 bash 配置文件引起的环境变量冲突、混乱的问题，同时为了方便不同版本的管理，集群配置了 module 工具来调用系统预装的软件。只有系统预装的软件才可以使用 module 工具来加载。</p>
+<p>module的常用命令：</p>
+<ul>
+<li>module avail 查看所有可用的模块</li>
+<li>module avail xx 查看指定的模块</li>
+<li>module load module_name 来加载所需模块</li>
+</ul>
+<p>示例：默认的/usr/bin/gcc版本是4.85，想更换更高版本的gcc，可通过以下命令实现：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>gcc<span class="w"> </span>-v
+$<span class="w"> </span>which<span class="w"> </span>gcc
+$<span class="w"> </span>module<span class="w"> </span>avail
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc-10.1.0-gcc-4.8.5-2new4ox
+$<span class="w"> </span>gcc<span class="w"> </span>-v
+$<span class="w"> </span>which<span class="w"> </span>gcc
+/opt/app/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-10.1.0-2new4oxsi6o5ejrrjxsjtvvxubujfyyk/bin/gcc
+</code></pre></div></td></tr></table></div>
+
+<p>也可通过<code>module switch</code>切换。如果需要恢复之前的gcc，直接<code>module unload gcc-10.1.0-gcc-4.8.5-2new4ox</code>即可。</p>
+<p>在slurm任务脚本中，加载系统预装软件环境的命令和运行系统预装软件的命令，不能在脚本的同一行里。加载命令的一行，必须在运行命令的一行的上方。</p>
+<p>部分预装软件需运行相关脚本初始化，例如： 
+- 通过 source /opt/app/anaconda3/bin/activate 命令来激活conda环境
+- 通过 source /opt/intel/bin/compilervars.sh intel64 命令来激活intel的编译套件</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/intel/bin/compilervars.sh<span class="w"> </span>intel64
+$<span class="w"> </span>which<span class="w"> </span>mpirun
+/opt/intel/compilers_and_libraries_2020.1.217/linux/mpi/intel64/bin/mpirun
+$<span class="w"> </span>which<span class="w"> </span>icc
+/opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/icc
+</code></pre></div></td></tr></table></div>
+
+<p>module是Environment Modules 开源项目的命令，提供用户环境的动态修改，详细使用请参考：</p>
+<ul>
+<li><a href="https://github.com/cea-hpc/modules">https://github.com/cea-hpc/modules</a></li>
+<li><a href="https://modules.readthedocs.io/en/latest/INSTALL.html">https://modules.readthedocs.io/en/latest/INSTALL.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Environment_Modules_(software">https://en.wikipedia.org/wiki/Environment_Modules_(software</a>)</li>
+</ul>
+<p><code>cat ${MODULESHOME}</code> 查看moudles的安装和配置目录。</p>
+<h2 id="2">2、自行安装软件</h2>
+<h3 id="21-conda">2.1 Conda</h3>
+<p>集群支持也允许通过conda安装自己需要的软件包：</p>
+<ul>
+<li>使用集群预安装的版本：将Anaconda的可执行文件路径添加到~/.bashrc文件中PATH环境变量，<code>echo 'export PATH=/opt/app/anaconda3/bin:$PATH' &gt;&gt; ~/.bashrc</code>。</li>
+<li>自行安装指定版本的conda：</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>~/miniconda3/miniconda.sh
+bash<span class="w"> </span>~/miniconda3/miniconda.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+rm<span class="w"> </span>-rf<span class="w"> </span>~/miniconda3/miniconda.sh
+~/miniconda3/bin/conda<span class="w"> </span>init<span class="w"> </span>bash
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div></td></tr></table></div>
+
+<h3 id="22-spack">2.2 Spack</h3>
+<p><a href="https://spack.readthedocs.io/en/latest/index.html">Spack</a>是专为大型超级计算中心设计的自动化包管理器，支持各种平台和环境中的多个版本和软件配置。slurm集群已经设置安装好了spack，安装目录在<code>/opt/app/spack</code>。</p>
+<p>如果预安装的软件没有自己想要的，需要管理员通过spack安装。因权限控制，集群不允许用户使用系统spack安装。不过=可以自己的目录下安装spack再安装其他软件。Spack 是 “包管理器”，负责下载、编译、安装软件，Modules 是 “环境切换器”，负责激活/停用已经安装好的软件，通过修改环境变量实现。</p>
+<p><a href="https://stackoverflow.com/questions/77873047/what-are-the-key-differences-between-spack-and-conda-package-managers">conda和spack的区别</a>：</p>
+<ul>
+<li>Conda 使用预编译的软件包，通常已经包含了其依赖项，可以直接安装使用。</li>
+<li>Spack 支持从源码编译软件包，并且可以根据用户的需求配置编译器、编译选项、MPI 实现等。</li>
+<li>Conda 支持在不同虚拟环境中安装同一个软件包的不同版本。通过环境隔离来管理多版本的依赖。</li>
+<li>Spack 内置支持多个版本、不同编译器选项和编译选项的安装。一个用户可以在同一系统上安装多种配置的相同软件包，而不需要手动创建多个环境。</li>
+</ul>
+<p>conda对于深度学习等领域应用更广泛，更容易上手。但都用conda，会使得有很多重复的软件包，浪费存储空间。</p>
+<h2 id="3slurmglibc">3、slurm上源码编译：glibc</h2>
+<p>conda中预编译好的软件通常不是最新的，或者没有自己想要的版本，则可以通过直接从源码编译的方式安装。</p>
+<p>以glibc 2.29为例，glibc是GNU发布的c运行库，是linux系统中最底层的api。依赖glibc系统组件多，一般使用系统默认的，无法在整体部署高版本glibc，如果需要高版本glibc，可通过源码自行安装。集群上glibc对应的文件是/lib64/libc.so.6，<code>strings /lib64/libc.so.6 | grep GLIBC_</code> 可以看到当前 glibc 提供的 ABI 版本，最高版本是GLIBC_2.17，向后兼容所有更低版本的 GLIBC 接口，使用<code>ldd --version</code> 会显示ldd (GNU libc) 2.17。</p>
+<p>先配置好conda并激活指定的环境，默认的base环境会安装软件到公共目录，没有写权限会导致安装失败。</p>
+<p>申请计算节点并连接到计算节点，后续所有操作在计算节点操作，登录节点会因资源限制部分操作会失败。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>salloc
+salloc:<span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">22465</span>
+salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">22465</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">22465</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">22465</span>
+salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+salloc:<span class="w"> </span>Nodes<span class="w"> </span>gpu1<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+
+<span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>gpu1
+Warning:<span class="w"> </span>Permanently<span class="w"> </span>added<span class="w"> </span><span class="s1">&#39;gpu1&#39;</span><span class="w"> </span><span class="o">(</span>ED25519<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>known<span class="w"> </span>hosts.
+Last<span class="w"> </span>login:<span class="w"> </span>Thu<span class="w"> </span>Sep<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">15</span>:02:06<span class="w"> </span><span class="m">2025</span><span class="w"> </span>from<span class="w"> </span><span class="m">192</span>.168.0.1
+</code></pre></div></td></tr></table></div>
+
+<p>依赖升级：系统默认的make是3.82版本较低，编译glibc 2.29需要make和gmake 4.0及以上的版本，slurm上gmake链接到make。系统默认 gcc是 4.8 无法编译 glibc 2.29，需要切换到gcc 7.5版本，10.1的版本过高。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>conda<span class="w"> </span>install<span class="w"> </span>make<span class="w">  </span><span class="c1"># 如果报错，使用conda clean --all --yes 清理缓存再安装</span>
+module<span class="w"> </span>load<span class="w"> </span>gcc-7.5.0-gcc-4.8.5-of6wn6o
+</code></pre></div></td></tr></table></div>
+
+<p>然后执行以下命令下载解压并环境探测和配置构建，--prefix指定的安装目录前缀不要与源文件相同，否则后面安装会因为文件覆盖报错。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/opt/app/glibc-2.29
+wget<span class="w"> </span>http://ftp.gnu.org/gnu/glibc/glibc-2.29.tar.gz
+tar<span class="w"> </span>-zxvf<span class="w"> </span>glibc-2.29.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>glibc-2.29
+mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+../configure<span class="w"> </span>--prefix<span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/opt/app/glibc-2.29<span class="w"> </span>--disable-sanity-checks<span class="w"> </span><span class="nv">MAKE</span><span class="o">=</span><span class="k">$(</span>which<span class="w"> </span>make<span class="k">)</span>
+</code></pre></div></td></tr></table></div>
+
+<p>若configure操作出现如下的错误提示，</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>LD_LIBRARY_PATH<span class="w"> </span>shouldn<span class="err">&#39;</span>t<span class="w"> </span>contain<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory<span class="w"> </span>when
+***<span class="w"> </span>building<span class="w"> </span>glibc
+</code></pre></div></td></tr></table></div>
+
+<p>使用<code>echo $LD_LIBRARY_PATH</code> 检查下路径是否包含了 . (当前目录) 或空条目（代表当前目录），通常是最后多了一个:号，将内容复制去掉最后的:并重新配置环境变量<code>$LD_LIBRARY_PATH</code>,示例如下。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/app/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-7.5.0-of6wn6ob65uvcmzh2ycienc5fikcmov2/lib64:/opt/app/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-7.5.0-of6wn6ob65uvcmzh2ycienc5fikcmov2/lib:/usr/local/nvidia/lib
+</code></pre></div></td></tr></table></div>
+
+<p>再编译安装</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>make<span class="w"> </span>-j16<span class="w">       </span><span class="c1"># make[1]: Leaving directory &#39;/home/utest/opt/glibc-2.29&#39; 表示正常结束</span>
+make<span class="w"> </span>install<span class="w">    </span><span class="c1"># make[1]: Leaving directory &#39;/home/utest/opt/glibc-2.29&#39;表示正常结束</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/opt/app/glibc-2.29/bin:<span class="nv">$PATH</span>
+ldd<span class="w"> </span>--version
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../slurm-base/" class="md-footer__link md-footer__link--prev" aria-label="上一页: slurm集群基础">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                slurm集群基础
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../slurm-pytorch-example/" class="md-footer__link md-footer__link--next" aria-label="下一页: slurm运行Pytorch示例">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                slurm运行Pytorch示例
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.footer", "navigation.top", "navigation.tracking", {"tabs": true}], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/baidu-tongji.js"></script>
+      
+        <script src="../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

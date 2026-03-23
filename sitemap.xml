@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>http://localhost:1234/</loc>
+         <lastmod>2026-03-23</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:1234/slurm/slurm-app-install/</loc>
+         <lastmod>2026-03-23</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:1234/slurm/slurm-base/</loc>
+         <lastmod>2026-03-23</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:1234/slurm/slurm-pytorch-example/</loc>
+         <lastmod>2026-03-23</lastmod>
+    </url>
+</urlset>

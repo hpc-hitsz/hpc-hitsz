@@ -1,0 +1,1110 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:1234/slurm/slurm-base/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../slurm-app-install/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>slurm集群基础 - 深圳校区高性能计算平台手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../js/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Greep" data-md-color-accent="Greep">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1slurm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="深圳校区高性能计算平台手册" class="md-header__button md-logo" aria-label="深圳校区高性能计算平台手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56zm-16 104h192c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32m192 32H160v192h192z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            深圳校区高性能计算平台手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              slurm集群基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="深圳校区高性能计算平台手册" class="md-nav__button md-logo" aria-label="深圳校区高性能计算平台手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56zm-16 104h192c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32m192 32H160v192h192z"/></svg>
+
+    </a>
+    深圳校区高性能计算平台手册
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    集群概况
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    slurm集群基础
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    slurm集群基础
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      1、slurm集群登录
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1、slurm集群登录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 登录节点和计算节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-vscodeslurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 VSCode远程连接slurm登录节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-vscodeslurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 VSCode远程连接slurm计算节点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2、Slurm常用命令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2、Slurm常用命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-sinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 sinfo查看集群状态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-squeue" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 squeue查看作业信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 QoS限制策略查看
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3、作业提交
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3、作业提交">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 交互作业
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 批量作业
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 指定GPU和分区
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm-app-install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    slurm环境配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm-pytorch-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    slurm运行Pytorch示例
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      1、slurm集群登录
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1、slurm集群登录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 登录节点和计算节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-vscodeslurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 VSCode远程连接slurm登录节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-vscodeslurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 VSCode远程连接slurm计算节点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2、Slurm常用命令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2、Slurm常用命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-sinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 sinfo查看集群状态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-squeue" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 squeue查看作业信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 QoS限制策略查看
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3、作业提交
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3、作业提交">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 交互作业
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 批量作业
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 指定GPU和分区
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>slurm集群基础</h1>
+
+<p>登录节点做了资源限制，若直接在登录节点配置conda环境等可能会提示内存不足等错误，更不要在登录节点跑计算任务，可使用salloc申请一个交互式作业进行环境配置，登录节点和计算节点环境共享。</p>
+<h2 id="1slurm">1、slurm集群登录</h2>
+<p>每套slurm集群有自己的访问端口，在“工作台”-“资源总览”中通过点击如图所示图标可显示集群的IP和端口信息。</p>
+<p>平台公共的Slurm集群的IP和端口是固定的不会变动。连接方式跟访问普通的远程Linux服务器一致，若用WSL或者Linux终端，使用ssh连接集群，username替换为自己的"u+学号"。如果经常使用，请自行配置ssh免密登录。在首次使用ssh登录之前，需要在平台右上角“个人中心”管理界面重置密码，并使用充值后的密码进行ssh连接。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span>ssh<span class="w"> </span>-p<span class="w"> </span>xx<span class="w"> </span>username@xx.xx.xx.xx
+</code></pre></div></td></tr></table></div>
+
+<h3 id="11">1.1 登录节点和计算节点</h3>
+<p>登录节点所在的服务器无GPU卡，仅供用户登录提交作业使用，在登录节点运行nvidia-smi时无回显，即无法调用GPU资源。因登录节点有资源限制，部分操作容易失败尤其容易出现OOM的错误，环境配置、代码调试等请都在计算节点操作，养成通过hostname区分是在登录节点和计算节点的习惯。</p>
+<ul>
+<li>登录节点：用于作业提交、状态查看、连接到计算节点，无GPU，登录节点的<code>hostname</code>是<code>workstation</code>，比如：</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>[utest@workstation ~]
+</code></pre></div></td></tr></table></div>
+
+<ul>
+<li>计算节点：任务计算，有GPU，<code>hostname</code>是节点编号，比如gpu1：</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>[utest@gpu1 ~]
+</code></pre></div></td></tr></table></div>
+
+<h3 id="12-vscodeslurm">1.2 VSCode远程连接slurm登录节点</h3>
+<p><a href="https://code.visualstudio.com/docs/remote/linux">VSCode  Remote Linux prerequisites</a> ：从 VS Code 1.86（2024年初）及之后的版本开始，其内置的 vscode-server 要求libc.so.6中的 glibc ≥ 2.28，libstdc++中的GLIBCXX &gt;= 3.4.25。slurm集群默认的glibc版本是2.17，导致vscode无法远程连接slurm。右下角会显示一个正在连接中的提示小窗，点击提示信息中高亮的 details可以看到详细的log。</p>
+<p>VSCode远程连接slurm的方式如下：</p>
+<ul>
+<li>方式一：降级使用的VSCode版本到1.85.2及以下，下载地址：<a href="https://code.visualstudio.com/updates/v1_85">https://code.visualstudio.com/updates/v1_85</a>。本地装两个不同版本的VSCode，低版本的专门用于访问slurm。</li>
+<li>方式二：patch VS Code Server，未测试过，仅做参考，欢迎配置通过的同学反馈。</li>
+<li>
+<p>官方说明：<a href="https://code.visualstudio.com/docs/remote/faq#_can-i-run-vs-code-server-on-older-linux-distributions">https://code.visualstudio.com/docs/remote/faq#_can-i-run-vs-code-server-on-older-linux-distributions</a></p>
+</li>
+<li>
+<p>开源的方案：<a href="https://github.com/MikeWang000000/vscode-server-centos7">https://github.com/MikeWang000000/vscode-server-centos7</a></p>
+</li>
+<li>
+<p>知乎上手动安装的教程：<a href="https://zhuanlan.zhihu.com/p/1909663308669260068">https://zhuanlan.zhihu.com/p/1909663308669260068</a></p>
+</li>
+<li>
+<p>方式三：客户端用新版本，如下手动替换 server端版本，测试失败，仍会自动下载与客户端对应版本的server。</p>
+</li>
+<li>
+<p><a href="https://github.com/microsoft/vscode/tags?after=1.86.2">https://github.com/microsoft/vscode/tags?after=1.86.2</a>  查看具体的commit id，1.85.2对应<code>8b3775030ed1a69b13e4f4c628c612102e30a681</code>.</p>
+</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.vscode-server/bin/8b3775030ed1a69b13e4f4c628c612102e30a681
+wget<span class="w"> </span>-O<span class="w"> </span>~/.vscode-server/bin/8b3775030ed1a69b13e4f4c628c612102e30a681/vscode-server.tar.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://update.code.visualstudio.com/commit:8b3775030ed1a69b13e4f4c628c612102e30a681/server-linux-x64/stable
+
+tar<span class="w"> </span>-xzf<span class="w"> </span>~/.vscode-server/bin/8b3775030ed1a69b13e4f4c628c612102e30a681/vscode-server.tar.gz<span class="w"> </span>-C<span class="w"> </span>~/.vscode-server/bin/8b3775030ed1a69b13e4f4c628c612102e30a681<span class="w"> </span>--strip-components<span class="o">=</span><span class="m">1</span>
+</code></pre></div></td></tr></table></div>
+
+<h3 id="13-vscodeslurm">1.3 VSCode远程连接slurm计算节点</h3>
+<p>若要使用VSCode远程连接slurm，因slurm登录节点做了资源限制，直接远程连接可能失败，先使用salloc申请计算节点，然后利用ProxyJump远程连接计算节点。具体操作参考： <a href="https://hpc.cloud/d/280-vscode/2">https://hpc.cloud/d/280-vscode/2</a> ,重点是下面的VSCode配置文件，注意用户名和gpu1根据实际情况修改。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>Host：<span class="w"> </span>slurm<span class="w">       </span><span class="c1"># 登陆节点别名，可任意</span>
+<span class="w">  </span>HostName<span class="w"> </span>xx.xx.xx.xx
+<span class="w">  </span>Port<span class="w"> </span>xx
+<span class="w">  </span>User<span class="w"> </span>u20250101<span class="w">   </span><span class="c1"># 替换为自己的用户名</span>
+<span class="w">  </span>ForwardAgent<span class="w"> </span>yes
+
+Host<span class="w"> </span>compute<span class="w">       </span><span class="c1"># 计算节点别名，可任意</span>
+<span class="w">    </span>Hostname<span class="w"> </span>gpu1<span class="w">    </span><span class="c1"># 计算节点的IP地址或hostname，要跟salloc分配到的节点一致，根据实际情况修改</span>
+<span class="w">    </span>User<span class="w"> </span>u20250101<span class="w">   </span><span class="c1"># 替换为自己的用户名</span>
+<span class="w">    </span>ProxyJump<span class="w"> </span>slurm<span class="w">  </span><span class="c1"># 上面配置的登录节点别名</span>
+</code></pre></div></td></tr></table></div>
+
+<h2 id="2slurm">2、Slurm常用命令</h2>
+<h3 id="21-sinfo">2.1 sinfo查看集群状态</h3>
+<ul>
+<li>sinfo 查看节点与分区状态，可以看到gpu和gpu-a30两个分区，gpu分区3个A100节点，对应的node编号是gpu[1-3]，gpu-a30是2个A30节点，对应node编号是gpu[5-6]。TIMELIMIT是2天。</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sinfo
+PARTITION<span class="w"> </span>AVAIL<span class="w">  </span>TIMELIMIT<span class="w">  </span>NODES<span class="w">  </span>STATE<span class="w"> </span>NODELIST
+gpu*<span class="w">         </span>up<span class="w"> </span><span class="m">2</span>-00:00:00<span class="w">      </span><span class="m">3</span><span class="w">    </span>mix<span class="w"> </span>gpu<span class="o">[</span><span class="m">1</span>-3<span class="o">]</span>
+gpu-a30<span class="w">      </span>up<span class="w"> </span><span class="m">2</span>-00:00:00<span class="w">      </span><span class="m">2</span><span class="w">   </span>idle<span class="w"> </span>gpu<span class="o">[</span><span class="m">5</span>-6<span class="o">]</span>
+</code></pre></div></td></tr></table></div>
+
+<p>加-N选项具体查看每个节点的状态</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sinfo<span class="w"> </span>-N
+NODELIST<span class="w">   </span>NODES<span class="w"> </span>PARTITION<span class="w"> </span>STATE
+gpu1<span class="w">           </span><span class="m">1</span><span class="w">      </span>gpu*<span class="w"> </span>mix
+gpu2<span class="w">           </span><span class="m">1</span><span class="w">      </span>gpu*<span class="w"> </span>mix
+gpu3<span class="w">           </span><span class="m">1</span><span class="w">      </span>gpu*<span class="w"> </span>mix
+gpu5<span class="w">           </span><span class="m">1</span><span class="w">   </span>gpu-a30<span class="w"> </span>idle
+gpu6<span class="w">           </span><span class="m">1</span><span class="w">   </span>gpu-a30<span class="w"> </span>idle
+</code></pre></div></td></tr></table></div>
+
+<p>查看指定的分区情况：sinfo --partition=cpu</p>
+<ul>
+<li>mix 是部分占用，可以分配新的作业</li>
+<li>idle 是空闲，完全没有占用</li>
+<li>alloc 节点满载，某项资源达到100%不可分配新作业</li>
+</ul>
+<h3 id="22-squeue">2.2 squeue查看作业信息</h3>
+<p>squeue 查看队列中的所有作业信息</p>
+<ul>
+<li>Name为interract的是交互式作业。</li>
+<li>ST是状态，PD即pending处于挂起状态，第一个作业是PD状态，看后面的原因是QOSMaxGRESPerUser触发了 QOS（服务质量）中定义的“单用户最大通用资源（GRES）限制。用户有其他作业在运行，暂时挂起，等运行中的作业结束了，该作业会符合要求就会被分配。如果用户提交的作业请求即使等运行中的作业结束了也无法满足则会直接被拒绝。</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>squeue
+<span class="w">      </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="w">      </span><span class="m">23054</span><span class="w">       </span>gpu<span class="w"> </span>exp24_mu<span class="w"> </span>u2023112<span class="w"> </span>PD<span class="w">       </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>QOSMaxGRESPerUser<span class="o">)</span>
+<span class="w">      </span><span class="m">22916</span><span class="w">       </span>gpu<span class="w">  </span>dhr_gpu<span class="w"> </span>u2023311<span class="w">  </span>R<span class="w"> </span><span class="m">1</span>-16:12:14<span class="w">      </span><span class="m">1</span><span class="w"> </span>gpu1
+<span class="w">      </span><span class="m">22944</span><span class="w">       </span>gpu<span class="w">  </span>dhr_gpu<span class="w"> </span>u2024311<span class="w">  </span>R<span class="w"> </span><span class="m">1</span>-13:02:42<span class="w">      </span><span class="m">1</span><span class="w"> </span>gpu2
+<span class="w">      </span><span class="m">23048</span><span class="w">       </span>gpu<span class="w"> </span>interact<span class="w"> </span>u2201106<span class="w">  </span>R<span class="w">   </span><span class="m">11</span>:40:41<span class="w">      </span><span class="m">1</span><span class="w"> </span>gpu1
+</code></pre></div></td></tr></table></div>
+
+<p>详细查看队列中的作业情况</p>
+<ul>
+<li><code>squeue -l</code> ，long report 选项，查看更详细的信息</li>
+<li><code>squeue  -o "%.18i %.10P %.8j %.12u %.2t %.10M %.6D %.20b  %.20S %R"</code>，指定查看的内容和输出格式<ul>
+<li>i 是id，P是partion，j是job name，u是user， t是Time，S是Start time。</li>
+</ul>
+</li>
+<li><code>squeue --help</code>  查看帮助选项</li>
+</ul>
+<h3 id="23-qos">2.3 QoS限制策略查看</h3>
+<p>QOS: Quality of Service，Slurm 用来控制资源配额、优先级和限制的策略集合。常用的限制类别如下：</p>
+<ul>
+<li>
+<p>作业数量类</p>
+<p>MaxJobs：最多同时运行的作业数</p>
+</li>
+</ul>
+<p>MaxSubmitJobs：最多可提交的作业数（排队+运行）</p>
+<ul>
+<li>
+<p>CPU 核心数</p>
+<p>MaxCPUs：整个 QOS 可用 CPU 总数</p>
+<p>MaxCPUsPerJob：单个作业最多 CPU 数</p>
+</li>
+<li>
+<p>内存</p>
+</li>
+</ul>
+<p>MaxMemPerNode：每节点最大内存</p>
+<p>MaxMemPerCPU：每核最大内存</p>
+<ul>
+<li>GPU（GRES）</li>
+</ul>
+<p>Slurm 用 GRES 表示 GPU，实际写法类似 gres/gpu=4</p>
+<p>MaxGRES：QOS 总 GPU 限制</p>
+<p>MaxGRESPerJob：每个作业最大 GPU 数</p>
+<ul>
+<li>Priority：QOS 优先级，部分用户会配置多个</li>
+<li>
+<p>时间限制</p>
+</li>
+<li>
+<p>MaxWall / MaxWallDurationPerJob：最长运行时间</p>
+</li>
+<li>
+<p>使用量限制</p>
+<p>GrpCPUs：整个账户/组最多用多少 CPU</p>
+<p>GrpMem：总内存限制</p>
+<p>GrpGRES：总 GPU 限制</p>
+<p>GrpJobs：总作业数</p>
+</li>
+</ul>
+<p>普通用户查看Qos限制方式：</p>
+<ul>
+<li><code>scontrol show partition</code>查看分区的配置情况，包含部分限制</li>
+<li><code>sacctmgr show qos format=Name,Priority,MaxWall,MaxTRESPU,MaxJobsPu,MaxSubmitPu</code> 空值表示没有限制</li>
+<li><code>sacctmgr list qos</code> </li>
+</ul>
+<p>日常使用超算资源只需掌握简单的几条命令即可，具体详细的说明请参考<a href="https://slurm.schedmd.com/documentation.html">SLURM官方文档</a>。</p>
+<h2 id="3">3、作业提交</h2>
+<p>Slurm作业分为交互式和批量式两种。交互式作业通常用于环境调试，长期后台计算的任务则以作业脚本的方式进行提交。</p>
+<ul>
+<li>salloc：申请所需的计算资源（CPU、内存、GPU等），申请成功后获得一个在该节点上的 Shell。</li>
+<li>srun：跟要执行的命令，资源分配后直接运行对应的命令，常用语简单任务，比如<code>srun -p cpu -n 4 --pty /bin/bash</code> 启动远程主机bash终端。</li>
+<li>sbatch：跟要执行的脚本，资源分配后执行对应的脚本，适合复杂的任务。</li>
+<li>scancel 取消作业</li>
+</ul>
+<h3 id="31">3.1 交互作业</h3>
+<p>集群的计算节点默认不允许用户直接登录，需要分配到计算资源后才运行登录。在登录到集群后，使用<code>salloc</code>命令分配资源，然后再ssh到分配的节点上进行处理。具体是gpu1还是gpu2或者其他节点，要看salloc执行完之后的命令提示。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>salloc
+salloc:<span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">22465</span>
+salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">22465</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">22465</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">22465</span>
+salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+salloc:<span class="w"> </span>Nodes<span class="w"> </span>gpu1<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+<span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>gpu1
+Warning:<span class="w"> </span>Permanently<span class="w"> </span>added<span class="w"> </span><span class="s1">&#39;gpu1&#39;</span><span class="w"> </span><span class="o">(</span>ED25519<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>known<span class="w"> </span>hosts.
+Last<span class="w"> </span>login:<span class="w"> </span>Thu<span class="w"> </span>Sep<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">15</span>:02:06<span class="w"> </span><span class="m">2025</span><span class="w"> </span>from<span class="w"> </span><span class="m">192</span>.168.0.1
+</code></pre></div></td></tr></table></div>
+
+<p>计算完成后，使用<code>exit</code>命令退出节点，注意需要<code>exit</code>两次，第一次<code>exit</code>是从计算节点退出到登录节点，第二次<code>exit</code>是释放所申请的资源。交互作业记得确认释放掉资源，否则会一直计费直到默认时间到。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">(</span>pytorch<span class="o">)</span><span class="w"> </span><span class="o">[</span>utest@gpu1<span class="w"> </span>build<span class="o">]</span>$<span class="w"> </span><span class="nb">exit</span>
+<span class="nb">logout</span>
+Connection<span class="w"> </span>to<span class="w"> </span>gpu1<span class="w"> </span>closed.
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">exit</span>
+<span class="nb">exit</span>
+salloc:<span class="w"> </span>Relinquishing<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">22468</span>
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span><span class="o">[</span>utest@workstation<span class="w"> </span>~<span class="o">]</span>$
+</code></pre></div></td></tr></table></div>
+
+<!--
+![image3](media/job_image4.png)
+![image4](media/job_image5.png)
+![image6](media/job_image7.png)
+-->
+
+<h3 id="32">3.2 批量作业</h3>
+<p>如果环境配置好，要跑时间长的计算任务，将程序执行命令按规则写成作业脚本，并通过<code>sbatch</code>提交计算。如果队列中作业较多会进行排队，分配资源后开始计费并自动开始计算，计算结束后会自动释放资源停止计费，资源调度更高效且对用户更实惠。计算过程中无法与环境交互，可以通过日志查看作业运行状态。</p>
+<p>一个简单的脚本示例如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code>    #! /bin/bash
+    ### 表示这是一个bash脚本
+
+    #SBATCH --job-name=JOBNAME
+    ### 设置该作业的作业名
+
+    #SBATCH --nodes=2
+    ### 指定该作业需要2个节点数
+
+    #SBATCH --ntasks-per-node=2
+    ### 每个节点所运行的进程数为2
+
+    #SBATCH --time=2:00:00
+    ### 作业最大的运行时间，超过时间后作业资源会被SLURM回收
+
+    #SBATCH --comment project_name
+    ### 指定从哪个项目扣费。如果没有这条参数，则从个人账户扣费
+
+    mpirun hostname
+    ### 程序的执行命令
+</code></pre></div></td></tr></table></div>
+
+<p>上述中<code>###</code>为注释行。第一行表示这是一个bash脚本，第4-17行以<code>#SBATCH</code>开头的命令表示这些是需要slurm系统处理的参数。</p>
+<p>如下所示，通过<code>sbatch+作业脚本名</code>提交作业，系统会返回作业编号，通过<code>squeue</code>命令可以看到作业运行状态，等作业执行完成后，默认会把程序的输出放到<code>slurm-作业编号.out</code>的文件中，可通过该文件查看程序的输出。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>sso@n1<span class="w"> </span>test<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>job.sh
+Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">193</span>
+<span class="o">[</span>sso@n1<span class="w"> </span>test<span class="o">]</span>$<span class="w"> </span>squeue
+<span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="w">               </span><span class="m">193</span><span class="w">       </span>cpu<span class="w">  </span>JOBNAME<span class="w">      </span>sso<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:01<span class="w">      </span><span class="m">2</span><span class="w"> </span>n<span class="o">[</span><span class="m">3</span>-4<span class="o">]</span>
+<span class="o">[</span>sso@n1<span class="w"> </span>test<span class="o">]</span>$<span class="w"> </span>ls
+job.sh
+<span class="o">[</span>sso@n1<span class="w"> </span>test<span class="o">]</span>$<span class="w"> </span>squeue
+<span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="o">[</span>sso@n1<span class="w"> </span>test<span class="o">]</span>$<span class="w"> </span>ls
+job.sh<span class="w">  </span>slurm-193.out
+<span class="o">[</span>sso@n1<span class="w"> </span>test<span class="o">]</span>$<span class="w"> </span>head<span class="w"> </span>slurm-193.out
+n3
+n3
+n2
+n2
+</code></pre></div></td></tr></table></div>
+
+<h3 id="33-gpu">3.3 指定GPU和分区</h3>
+<p>如果作业用到GPU，需在脚本中增加<code>--gres=gpu:&lt;number of card&gt;</code>参数。例如<code>#SBATCH --gres=gpu:2</code>指定2张GPU卡。以下为GPU作业的一个示例：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code>    #! /bin/bash
+    ### 表示这是一个bash脚本
+
+    #SBATCH --job-name=gpu-example
+    ### 该作业的作业名
+
+    #SBATCH --nodes=1
+    ### 该作业需要1个节点
+
+    #SBATCH --ntasks=16
+    ### 该作业需要16个CPU
+
+    #SBATCH --partition=gpu
+    ### 该作业在gpu分区中提交
+
+    #SBATCH --gres=gpu:1
+    ### 申请1块GPU卡
+
+    #SBATCH --comment project_name
+    ### 指定从哪个项目扣费。如果没有这条参数，则从个人账户扣费
+
+    source ~/.bashrc
+    ### 初始化环境变量
+
+    nvidia-smi
+    ### 程序的执行命令，可以是其他脚本比如 python test.py
+</code></pre></div></td></tr></table></div>
+
+<p>如要指定分区使用-p选项，默认提交到gpu分区，通过 <code>sbatch xx.sh -p gpu-a30</code>指定分区用A30的卡。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 集群概况">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                集群概况
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../slurm-app-install/" class="md-footer__link md-footer__link--next" aria-label="下一页: slurm环境配置">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                slurm环境配置
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.footer", "navigation.top", "navigation.tracking", {"tabs": true}], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/baidu-tongji.js"></script>
+      
+        <script src="../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
