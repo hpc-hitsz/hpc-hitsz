@@ -1,0 +1,100 @@
+site_name: 深圳校区高性能计算平台手册
+site_url: http://localhost:1234/    
+use_directory_urls: true
+
+nav:
+  - 集群概况: index.md
+  - slurm集群基础: slurm/slurm-base.md
+  - slurm环境配置: slurm/slurm-app-install.md
+  - slurm运行Pytorch示例: slurm/slurm-pytorch-example.md
+
+theme:
+  language: 'zh'
+  name: material
+  highlightjs: true
+  highlightjs_style: github
+  features:
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - navigation.footer
+    - navigation.top
+    - navigation.tracking # 
+    # - navigation.expand   # 会展开目录在左边侧边栏
+    # - navigation.sections
+    # - toc.integrate
+    - tabs: true
+  icon:
+    logo: fontawesome/solid/microchip
+    repo: fontawesome/brands/git-alt
+  palette:
+    primary: 'Greep'
+    accent: 'Greep'
+  hide:
+    - navigation   # 隐藏顶部导航
+
+reveal:
+  path: reveal.js/dist
+  transition: slide
+  theme:
+    name: white.css
+    path: theme
+  plugin:
+    path: reveal.js/plugin
+extra_css:
+  - js/extra.css
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.betterem:
+      smart_enable: all
+  - codehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - admonition
+  - extra
+  - meta
+  - tables
+  - toc
+  - pymdownx.emoji
+  - pymdownx.arithmatex:    # latex公式
+      generic: true
+  - codehilite:
+      linenums: true      # (可选) 显示行号
+      guess_lang: false   # (重要) 设为 false，强制要求指定语言标识符，避免误判
+      css_class: highlight
+  
+extra_javascript:
+  - js/baidu-tongji.js
+  - js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  # - mathjaxhelper.js
+
+# extra_css:
+#   - styles/extra.css
