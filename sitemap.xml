@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://github.com/hpc-hitsz/hpc-hitsz/</loc>
+         <loc>https://hpc-hitsz.github.io/hpc-hitsz/</loc>
          <lastmod>2026-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/hpc-hitsz/hpc-hitsz/slurm/slurm-app-install/</loc>
+         <loc>https://hpc-hitsz.github.io/hpc-hitsz/slurm/slurm-app-install/</loc>
          <lastmod>2026-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/hpc-hitsz/hpc-hitsz/slurm/slurm-base/</loc>
+         <loc>https://hpc-hitsz.github.io/hpc-hitsz/slurm/slurm-base/</loc>
          <lastmod>2026-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/hpc-hitsz/hpc-hitsz/slurm/slurm-pytorch-example/</loc>
+         <loc>https://hpc-hitsz.github.io/hpc-hitsz/slurm/slurm-pytorch-example/</loc>
          <lastmod>2026-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
