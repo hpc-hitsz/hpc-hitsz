@@ -1,5 +1,5 @@
 site_name: 深圳校区高性能计算平台手册
-site_url: http://localhost:1234/    
+site_url: https://github.com/hpc-hitsz/hpc-hitsz
 use_directory_urls: true
 
 nav:
